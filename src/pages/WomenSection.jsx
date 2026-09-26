@@ -1,35 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { products } from '../data/products';
 
 function WomenSection() {
+  const womenProducts = products.filter(p => p.category === 'women');
+
   return (
     <div className="page-content category-page">
       <h2>Women's Collection</h2>
       <p className="category-subtitle">Empower your workout with our latest women's athletic gear.</p>
       
       <div className="products-grid">
-        <div className="product-card">
-          <img src="/women1.jpg" alt="Women's Running Shoes" className="product-image" />
-          <div className="product-info">
-            <div className="product-title">CloudSprint Runner</div>
-            <div className="product-price">$119.00</div>
-          </div>
-        </div>
-        
-        <div className="product-card">
-          <img src="/women2.jpg" alt="Women's Leggings" className="product-image" />
-          <div className="product-info">
-            <div className="product-title">Aura Flex Leggings</div>
-            <div className="product-price">$75.50</div>
-          </div>
-        </div>
-        
-        <div className="product-card">
-          <img src="/women3.jpg" alt="Women's Sports Top" className="product-image" />
-          <div className="product-info">
-            <div className="product-title">Core Performance Set</div>
-            <div className="product-price">$95.00</div>
-          </div>
-        </div>
+        {womenProducts.map(product => (
+          <Link to={`/product/${product.id}`} className={`product-card ${product.type}`} key={product.id}>
+            <div className="product-image-container">
+              <img src={product.image} alt={product.name} className="product-image" />
+            </div>
+            <div className="product-info">
+              <div className="product-title">{product.name}</div>
+              <div className="product-price">${product.price.toFixed(2)}</div>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

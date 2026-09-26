@@ -6,6 +6,8 @@ import About from './pages/About';
 import WomenSection from './pages/WomenSection';
 import MenSection from './pages/MenSection';
 import Register from './pages/Register';
+import ProductDetails from './pages/ProductDetails';
+import Developer from './pages/Developer';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="women" element={<WomenSection />} />
           <Route path="men" element={<MenSection />} />
           <Route path="register" element={<Register />} />
+          <Route path="developer" element={<Developer />} />
+          <Route path="product/:id" element={<ProductDetails />} />
         </Route>
       </Routes>
     </BrowserRouter>
